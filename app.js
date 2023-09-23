@@ -9,7 +9,7 @@ import chatgpt from "./services/openai/chatgpt.js";
 import GoogleSheetService from "./services/sheets/index.js";
 
 const googelSheet = new GoogleSheetService(
-  "1rDDWdRcLmecRhDSepMZdJwxMIp8iOxZMjDKuh2dA6W8"
+  "1wO9O6SQTPVadW2NqawG-5yByTo4PqbnmqUWLlgN68ng"
 );
 
 const GLOBAL_STATE = [];
@@ -17,10 +17,18 @@ const GLOBAL_STATE = [];
 const flowPrincipal = bot
   .addKeyword(["hola", "hi"])
   .addAnswer([
-    `Bienvenidos a mi restaurante de cocina economica automatizado! 🚀`,
-    `Tenemos menus diarios variados`,
-    `Te gustaria conocerlos ¿?`,
-    `Escribe *menu*`,
+    `Muy buenas nnn mi nombre es Juan soy su asistente virtual de bienestar, estoy aquí para ayudarte, cualquier tema relacionado con las 7 áreas de bienestar`,
+    `en las cuales se encuentran:`,
+    `cultura
+    ·      salud
+    ·      Fomento Socioeconómico
+    ·      deporte
+    ·      unidades especiales 
+    ·      acompañamiento integral
+    ·      Otros`,
+    `Cualquier consulta relacionada a esas opciones aquí estoy para brindarte información, y si deseas comunicarte con alguien encargado de bienestar puedes enviar un correo electrónico a la siguiente dirección … o puedes llamar al siguiente número de teléfono…
+    Por último, te solicito que lo que desees saber acerca de bienestar lo escribas de una manera corta y clara , bueno estoy para ayudarte, espero tu consulta
+    `,
   ]);
 
 const flowMenu = bot
@@ -74,9 +82,9 @@ const flowEmpty = bot
   });
 
 const flowPedido = bot
-  .addKeyword(["pedir"], { sensitive: true })
+  .addKeyword(["bienestar", "areas de bienestar"], { sensitive: false })
   .addAnswer(
-    "¿Cual es tu nombre?",
+    "¿En cuál estás interesado?",
     { capture: true },
     async (ctx, { state }) => {
       state.update({ name: ctx.body });

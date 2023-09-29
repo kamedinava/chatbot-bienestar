@@ -17,13 +17,16 @@ function getRandomResponse(responses) {
 }
 
 
-const flowGracias = addKeyword(mssgThx.keywords, { sensitive: false }).addAnswer('🚀 Proyecto en desarrollo...',
+const flowGracias = addKeyword(mssgThx.keywords, { sensitive: false }).addAnswer(MSSG_STATE.DEVELOPMENT,
     {
         delay: 1000,
     }).addAnswer([getRandomResponse(mssgThx.responses),],
     )
 const flowSecundario = addKeyword(['2', 'siguiente', 'Otras', 'otras']).addAnswer(['📄 Aquí tenemos el flujo secundario',
-    'Te recuerdo que estoy en fase de desarrollo...',
+    'Te recuerdo que estoy en fase de desarrollo...', MSSG_STATE.DEVELOPMENT,
+    {
+        delay: 1000,
+    },
     'sin mas que agregar, me despido de esta conversación '], null, null, flowGracias)
 
 const flowCarrier = addKeyword(carrier.keyWord).addAnswer('Por el momento solo escribe "otras" ').addAnswer(

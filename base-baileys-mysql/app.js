@@ -1,103 +1,65 @@
-const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
+const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot')
 
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
-const MySQLAdapter = require('@bot-whatsapp/database/mysql')
+const MockAdapter = require('@bot-whatsapp/database/mock')
 
-/**
- * Declaramos las conexiones de MySQL
- */
-const MYSQL_DB_HOST = 'localhost'
-const MYSQL_DB_USER = 'usr'
-const MYSQL_DB_PASSWORD = 'pass'
-const MYSQL_DB_NAME = 'bot'
-const MYSQL_DB_PORT = '3306'
+const mssgThx = require('./mssg/thanks.json');
+const mssgWellcome = require('./mssg/welcome.json');
+const carrier = require('./mssg/carrier.json')
+const { MSSG_STATE } = require('./mssg/mssg');
 
-/**
- * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
- *
- *          Menu Principal
- *           - SubMenu 1
- *             - Submenu 1.1
- *           - Submenu 2
- *             - Submenu 2.1
- *
- * Primero declaras los submenus 1.1 y 2.1, luego el 1 y 2 y al final el principal.
- */
 
-const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
+// Función para seleccionar una respuesta aleatoria
+function getRandomResponse(responses) {
+    const randomIndex = Math.floor(Math.random() * responses.length);
+    return responses[randomIndex];
+}
 
-const flowDocs = addKeyword(['doc', 'documentacion', 'documentación']).addAnswer(
-    [
-        '📄 Aquí encontras las documentación recuerda que puedes mejorarla',
-        'https://bot-whatsapp.netlify.app/',
-        '\n*2* Para siguiente paso.',
-    ],
+
+const flowGracias = addKeyword(mssgThx.keywords, { sensitive: false }).addAnswer('🚀 Proyecto en desarrollo...',
+    {
+        delay: 1000,
+    }).addAnswer([getRandomResponse(mssgThx.responses),],
+    )
+const flowSecundario = addKeyword(['2', 'siguiente', 'Otras', 'otras']).addAnswer(['📄 Aquí tenemos el flujo secundario',
+    'Te recuerdo que estoy en fase de desarrollo...',
+    'sin mas que agregar, me despido de esta conversación '], null, null, flowGracias)
+
+const flowCarrier = addKeyword(carrier.keyWord).addAnswer('Por el momento solo escribe "otras" ').addAnswer(
+    carrier.response,
     null,
     null,
     [flowSecundario]
 )
 
-const flowTuto = addKeyword(['tutorial', 'tuto']).addAnswer(
-    [
-        '🙌 Aquí encontras un ejemplo rapido',
-        'https://bot-whatsapp.netlify.app/docs/example/',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-)
+const flowNull = addKeyword(EVENTS.WELCOME).addAnswer(MSSG_STATE.INVALID)
 
-const flowGracias = addKeyword(['gracias', 'grac']).addAnswer(
-    [
-        '🚀 Puedes aportar tu granito de arena a este proyecto',
-        '[*opencollective*] https://opencollective.com/bot-whatsapp',
-        '[*buymeacoffee*] https://www.buymeacoffee.com/leifermendez',
-        '[*patreon*] https://www.patreon.com/leifermendez',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-)
-
-const flowDiscord = addKeyword(['discord']).addAnswer(
-    ['🤪 Únete al discord', 'https://link.codigoencasa.com/DISCORD', '\n*2* Para siguiente paso.'],
-    null,
-    null,
-    [flowSecundario]
-)
-
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('🙌 Hola bienvenido a este *Chatbot*')
+const flowPrincipal = addKeyword(mssgWellcome.keyWord, { sensitive: false })
+    .addAnswer(mssgWellcome.response)
     .addAnswer(
-        [
-            'te comparto los siguientes links de interes sobre el proyecto',
-            '👉 *doc* para ver la documentación',
-            '👉 *gracias*  para ver la lista de videos',
-            '👉 *discord* unirte al discord',
-        ],
+        mssgWellcome.options,
         null,
         null,
-        [flowDocs, flowGracias, flowTuto, flowDiscord]
+        [flowCarrier, flowGracias, flowNull]
     )
 
-const main = async () => {
-    const adapterDB = new MySQLAdapter({
-        host: MYSQL_DB_HOST,
-        user: MYSQL_DB_USER,
-        database: MYSQL_DB_NAME,
-        password: MYSQL_DB_PASSWORD,
-        port: MYSQL_DB_PORT,
+const flowBienvenida = addKeyword(EVENTS.WELCOME)
+    .addAnswer(MSSG_STATE.WELCOME_CHAT, async ({ gotoFlow }) => {
+        await gotoFlow(flowPrincipal)
     })
-    const adapterFlow = createFlow([flowPrincipal])
+
+const main = async () => {
+    const adapterDB = new MockAdapter()
+    const adapterFlow = createFlow([flowBienvenida, flowPrincipal, flowGracias])
     const adapterProvider = createProvider(BaileysProvider)
+
     createBot({
         flow: adapterFlow,
         provider: adapterProvider,
         database: adapterDB,
     })
+
     QRPortalWeb()
 }
 

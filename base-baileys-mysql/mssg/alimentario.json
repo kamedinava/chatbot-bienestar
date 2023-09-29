@@ -1,0 +1,86 @@
+{
+    "response": "El apoyo alimentario (o de desayuno, almuerzo, cena).  Es un apoyo para los estudiantes en el cual se da almuerzo en donde donde el orden de prioridad se da por PBM. Para más información sobre cómo acceder al apoyo se puede ingresar a este sitio web hola.com",
+    "keyWords": [
+        {
+            "keyword": "apoyo alimentario",
+            "variation": [
+                "apoyo alimentariO",
+                "ayuda comida",
+                "soporte alimentacion",
+                "respaldo nutrición",
+                "asistencia alimentaria",
+                "respaldo de comida"
+            ]
+        },
+        {
+            "keyword": "desayuno",
+            "variation": [
+                "desayunO",
+                "breakfast",
+                "comida matutina",
+                "desayunar",
+                "desayunar temprano"
+            ]
+        },
+        {
+            "keyword": "almuerzo",
+            "variation": [
+                "almuerzO",
+                "lunch",
+                "comida mediodía",
+                "comer al mediodía",
+                "comida de la tarde"
+            ]
+        },
+        {
+            "keyword": "cena",
+            "variation": [
+                "cEna",
+                "dinner",
+                "comida nocturna",
+                "cena de la noche",
+                "cenar tarde"
+            ]
+        },
+        {
+            "keyword": "PBM",
+            "variation": [
+                "PBM",
+                "Programa de Beneficio de Comida",
+                "Plan de Bienestar Alimentario",
+                "Puntaje de Beneficio de Alimentación",
+                "Prioridad de Beneficio de Comida"
+            ]
+        },
+        {
+            "keyword": "sitio web",
+            "variation": [
+                "página web",
+                "webpage",
+                "portal en línea",
+                "sitio de internet",
+                "web"
+            ]
+        },
+        {
+            "keyword": "información",
+            "variation": [
+                "info",
+                "datos",
+                "detalles",
+                "noticias",
+                "conocimiento"
+            ]
+        },
+        {
+            "keyword": "acceder",
+            "variation": [
+                "ingresar",
+                "entrar",
+                "obtener acceso",
+                "visitar",
+                "conectar"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "keyWord": [
+        "hola",
+        "ola",
+        "ole",
+        "hol@",
+        "ol@"
+    ],
+    "response": "🙌 ¡Hola! Bienvenido a nuestro chatbot de la Facultad de Ingeniería. ¿En qué puedo ayudarte hoy?",
+    "options": [
+        "Selecciona uno de los siguientes temas para obtener más información:",
+        "👉 *Carreras* para conocer nuestras ofertas académicas'",
+        "👉 *gracias* para agradecernos"
+    ]
+}

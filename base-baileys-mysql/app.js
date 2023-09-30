@@ -48,13 +48,23 @@ const flowPrincipal = addKeyword(mssgWellcome.keyWord, { sensitive: false })
     )
 
 const flowBienvenida = addKeyword(EVENTS.WELCOME)
-    .addAnswer(MSSG_STATE.WELCOME_CHAT, async ({ gotoFlow }) => {
-        await gotoFlow(flowPrincipal)
-    })
+    .addAnswer(MSSG_STATE.WELCOME_CHAT, null, async (ctx, { gotoFlow }) => {
+        console.log(ctx.body)
+        processMssg(ctx);
+        if (ctx.body.includes('hola'))
+            gotoFlow(flowPrincipal)
 
+
+    })
+const processMssg = (context) => {
+    /* TODO
+        Integracion de nlp, devolver mesanje deacuerdo a lo que se escribe, deacuerdo a un contexto dado */
+    /* alternativa, enviar  a un flujo especifico, dependiendo de la intecion del texto */
+
+}
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowBienvenida, flowPrincipal, flowGracias])
+    const adapterFlow = createFlow([flowBienvenida, flowGracias])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({

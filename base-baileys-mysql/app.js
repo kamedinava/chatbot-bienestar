@@ -3,9 +3,6 @@ const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@
 const QRPortalWeb = require('@bot-whatsapp/portal');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
-const mssgThx = require('./mssg/thanks.json');
-const mssgWellcome = require('./mssg/welcome.json');
-const carrier = require('./mssg/carrier.json');
 const saludo = require('./mssg/saludo.json')
 const preguntaFacultad = require('./mssg/preguntaFacultad.json')
 const agradecimiento = require('./mssg/agradecimiento.json')
@@ -33,40 +30,15 @@ const respuestasSaludo = [
     'Hola, ¿cómo puedo asistirte?',
     '¡Hola! ¿Cómo puedo ayudarte?'
 ];
-
 nlpProcessor.cargarEjemplos(intencionesSaludo, respuestasSaludo);
-
-
 // Carga ejemplos de entrenamiento
 nlpProcessor.cargarEjemplos(saludo.intenciones, saludo.respuestas);
 nlpProcessor.cargarEjemplos(preguntaFacultad.intenciones, preguntaFacultad.respuestas);
 nlpProcessor.cargarEjemplos(agradecimiento.intenciones, agradecimiento.respuestas);
-
 // Entrena el modelo
 (async () => {
     await nlpProcessor.entrenarModelo();
 })();
-
-// Función para seleccionar una respuesta aleatoria
-function getRandomResponse(responses) {
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    return responses[randomIndex];
-}
-
-
-
-
-
-const flowNull = addKeyword(EVENTS.WELCOME).addAnswer(MSSG_STATE.INVALID);
-
-const flowPrincipal = addKeyword(mssgWellcome.keyWord, { sensitive: false })
-    .addAnswer(mssgWellcome.response)
-    .addAnswer(
-        mssgWellcome.options,
-        null,
-        null,
-        [flowCarrier, flowGracias, flowNull]
-    );
 
 const flowBienvenida = addKeyword(EVENTS.WELCOME)
     .addAnswer(MSSG_STATE.ALTERN, {
@@ -87,9 +59,6 @@ const flowBienvenida = addKeyword(EVENTS.WELCOME)
         }
 
     });
-
-
-
 const main = async () => {
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([flowBienvenida])

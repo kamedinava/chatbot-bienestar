@@ -1,0 +1,125 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '573506096890@s.whatsapp.net',
+    fromMe: false,
+    id: 'D743D656169EBF026285961CD8095C79',
+    participant: undefined
+  },
+  messageTimestamp: 1696134642,
+  pushName: 'Velan🍃',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'hola',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'hola',
+  from: '573506096890'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573506096890@s.whatsapp.net',
+    fromMe: false,
+    id: '714DF2CE6D42B9FEB234F00F24067A6F',
+    participant: undefined
+  },
+  messageTimestamp: 1696134663,
+  pushName: 'Velan🍃',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Apoyos facultad',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Apoyos facultad',
+  from: '573506096890'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573506096890@s.whatsapp.net',
+    fromMe: false,
+    id: '8AAEDD2CF772E7FB9DB69508778309D2',
+    participant: undefined
+  },
+  messageTimestamp: 1696134686,
+  pushName: 'Velan🍃',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Dime algo de las ayudas de alojamiento',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Dime algo de las ayudas de alojamiento',
+  from: '573506096890'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573506096890@s.whatsapp.net',
+    fromMe: false,
+    id: 'FEB6DA51109A660429DD4131553B5F8B',
+    participant: undefined
+  },
+  messageTimestamp: 1696134707,
+  pushName: 'Velan🍃',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Entonces quiero saber algo de la facultad',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Entonces quiero saber algo de la facultad',
+  from: '573506096890'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573506096890@s.whatsapp.net',
+    fromMe: false,
+    id: 'B5C56A8838215B58DF9136E87D246513',
+    participant: undefined
+  },
+  messageTimestamp: 1696134725,
+  pushName: 'Velan🍃',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'En el almuerzo',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'En el almuerzo',
+  from: '573506096890'
+}

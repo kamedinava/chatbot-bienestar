@@ -1,0 +1,12 @@
+{
+    "intenciones": [
+        "Hola",
+        "Hola, ¿cómo estás?",
+        "Saludos"
+    ],
+    "respuestas": [
+        "Hola, bienvenido al chatbot.",
+        "¡Hola! Estoy aquí para ayudarte.",
+        "Saludos, ¿en qué puedo asistirte?"
+    ]
+}

@@ -1,14 +1,51 @@
-const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot')
-
-const QRPortalWeb = require('@bot-whatsapp/portal')
-const BaileysProvider = require('@bot-whatsapp/provider/baileys')
-const MockAdapter = require('@bot-whatsapp/database/mock')
-
+// main.js
+const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot');
+const QRPortalWeb = require('@bot-whatsapp/portal');
+const BaileysProvider = require('@bot-whatsapp/provider/baileys');
+const MockAdapter = require('@bot-whatsapp/database/mock');
 const mssgThx = require('./mssg/thanks.json');
 const mssgWellcome = require('./mssg/welcome.json');
-const carrier = require('./mssg/carrier.json')
+const carrier = require('./mssg/carrier.json');
+const saludo = require('./mssg/saludo.json')
+const preguntaFacultad = require('./mssg/preguntaFacultad.json')
+const agradecimiento = require('./mssg/agradecimiento.json')
 const { MSSG_STATE } = require('./mssg/mssg');
+const NlpProcessor = require('./NLP/NlpProcessor');
 
+// Crea una instancia de NlpProcessor
+const nlpProcessor = new NlpProcessor();
+const intencionesSaludo = [
+    'Hola',
+    'Buenos días',
+    'Buenas tardes',
+    '¿Cómo estás?',
+    'Hola, ¿cómo va?',
+    '¡Hola!',
+    'Saludos'
+];
+
+const respuestasSaludo = [
+    '¡Hola! ¿En qué puedo ayudarte?',
+    'Buenos días, ¿en qué puedo ayudarte?',
+    '¡Hola! ¿Cómo puedo asistirte hoy?',
+    'Hola, ¿en qué puedo colaborar contigo?',
+    '¡Hola! ¿En qué puedo ayudarte hoy?',
+    'Hola, ¿cómo puedo asistirte?',
+    '¡Hola! ¿Cómo puedo ayudarte?'
+];
+
+nlpProcessor.cargarEjemplos(intencionesSaludo, respuestasSaludo);
+
+
+// Carga ejemplos de entrenamiento
+nlpProcessor.cargarEjemplos(saludo.intenciones, saludo.respuestas);
+nlpProcessor.cargarEjemplos(preguntaFacultad.intenciones, preguntaFacultad.respuestas);
+nlpProcessor.cargarEjemplos(agradecimiento.intenciones, agradecimiento.respuestas);
+
+// Entrena el modelo
+(async () => {
+    await nlpProcessor.entrenarModelo();
+})();
 
 // Función para seleccionar una respuesta aleatoria
 function getRandomResponse(responses) {
@@ -17,26 +54,10 @@ function getRandomResponse(responses) {
 }
 
 
-const flowGracias = addKeyword(mssgThx.keywords, { sensitive: false }).addAnswer(MSSG_STATE.DEVELOPMENT,
-    {
-        delay: 1000,
-    }).addAnswer([getRandomResponse(mssgThx.responses),],
-    )
-const flowSecundario = addKeyword(['2', 'siguiente', 'Otras', 'otras']).addAnswer(['📄 Aquí tenemos el flujo secundario',
-    'Te recuerdo que estoy en fase de desarrollo...', MSSG_STATE.DEVELOPMENT,
-    {
-        delay: 1000,
-    },
-    'sin mas que agregar, me despido de esta conversación '], null, null, flowGracias)
 
-const flowCarrier = addKeyword(carrier.keyWord).addAnswer('Por el momento solo escribe "otras" ').addAnswer(
-    carrier.response,
-    null,
-    null,
-    [flowSecundario]
-)
 
-const flowNull = addKeyword(EVENTS.WELCOME).addAnswer(MSSG_STATE.INVALID)
+
+const flowNull = addKeyword(EVENTS.WELCOME).addAnswer(MSSG_STATE.INVALID);
 
 const flowPrincipal = addKeyword(mssgWellcome.keyWord, { sensitive: false })
     .addAnswer(mssgWellcome.response)
@@ -45,26 +66,33 @@ const flowPrincipal = addKeyword(mssgWellcome.keyWord, { sensitive: false })
         null,
         null,
         [flowCarrier, flowGracias, flowNull]
-    )
+    );
 
 const flowBienvenida = addKeyword(EVENTS.WELCOME)
-    .addAnswer(MSSG_STATE.WELCOME_CHAT, null, async (ctx, { gotoFlow }) => {
-        console.log(ctx.body)
-        processMssg(ctx);
-        if (ctx.body.includes('hola'))
-            gotoFlow(flowPrincipal)
+    .addAnswer(MSSG_STATE.ALTERN, {
+        delay: 3000,
+    }, async (ctx, { flowDynamic }) => {
+        const text = await ctx.body.toString();
+        console.log(text);
+        try {
+            // Debes esperar la respuesta de la función processMssg aquí, utilizando await
+            const respuesta = await nlpProcessor.processMssg(text);
+            console.log(respuesta)
+            console.log('respuesta', typeof respuesta);
+            console.log('entrada', typeof ctx.body);
+            // Utiliza un template literal para incluir la respuesta en el mensaje
+            await flowDynamic(`${respuesta}`);
+        } catch (error) {
+            console.error("Error al procesar el mensaje:", error);
+        }
+
+    });
 
 
-    })
-const processMssg = (context) => {
-    /* TODO
-        Integracion de nlp, devolver mesanje deacuerdo a lo que se escribe, deacuerdo a un contexto dado */
-    /* alternativa, enviar  a un flujo especifico, dependiendo de la intecion del texto */
 
-}
 const main = async () => {
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([flowBienvenida, flowGracias])
+    const adapterFlow = createFlow([flowBienvenida])
     const adapterProvider = createProvider(BaileysProvider)
 
     createBot({
@@ -74,6 +102,7 @@ const main = async () => {
     })
 
     QRPortalWeb()
+
 }
 
-main()
+main();

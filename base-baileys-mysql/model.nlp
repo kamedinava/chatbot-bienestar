@@ -1,0 +1,991 @@
+{
+  "settings": {
+    "languages": [
+      "es"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "es"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "es": {
+        "settings": {
+          "locale": "es",
+          "trainByDomain": false,
+          "tag": "domain-manager-es",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hol": {
+            "intent": "Hola, bienvenido al chatbot.",
+            "domain": "default"
+          },
+          "buen,dia": {
+            "intent": "Buenos días, ¿en qué puedo ayudarte?",
+            "domain": "default"
+          },
+          "buen,tard": {
+            "intent": "¡Hola! ¿Cómo puedo asistirte hoy?",
+            "domain": "default"
+          },
+          "como,esta": {
+            "intent": "Hola, ¿en qué puedo colaborar contigo?",
+            "domain": "default"
+          },
+          "como,hol,ir": {
+            "intent": "¡Hola! ¿En qué puedo ayudarte hoy?",
+            "domain": "default"
+          },
+          "salud": {
+            "intent": "Saludos, ¿en qué puedo asistirte?",
+            "domain": "default"
+          },
+          "como,esta,hol": {
+            "intent": "¡Hola! Estoy aquí para ayudarte.",
+            "domain": "default"
+          },
+          "apoy,el,en,facult,hab,que": {
+            "intent": "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?",
+            "domain": "default"
+          },
+          "apoy,el,estudiantil,explicam,sobr": {
+            "intent": "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?",
+            "domain": "default"
+          },
+          "dim,el,facult,mas,sobr": {
+            "intent": "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?",
+            "domain": "default"
+          },
+          "grac": {
+            "intent": "No hay de qué, es mi trabajo :)",
+            "domain": "default"
+          },
+          "agradec,te": {
+            "intent": "De nada, estoy aquí para ayudarte.",
+            "domain": "default"
+          },
+          "ayud,excelent": {
+            "intent": "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas.",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "¡Hola! ¿En qué puedo ayudarte?": "default",
+          "Buenos días, ¿en qué puedo ayudarte?": "default",
+          "¡Hola! ¿Cómo puedo asistirte hoy?": "default",
+          "Hola, ¿en qué puedo colaborar contigo?": "default",
+          "¡Hola! ¿En qué puedo ayudarte hoy?": "default",
+          "Hola, ¿cómo puedo asistirte?": "default",
+          "¡Hola! ¿Cómo puedo ayudarte?": "default",
+          "Hola, bienvenido al chatbot.": "default",
+          "¡Hola! Estoy aquí para ayudarte.": "default",
+          "Saludos, ¿en qué puedo asistirte?": "default",
+          "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?": "default",
+          "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?": "default",
+          "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?": "default",
+          "No hay de qué, es mi trabajo :)": "default",
+          "De nada, estoy aquí para ayudarte.": "default",
+          "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas.": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "Hola",
+            "intent": "¡Hola! ¿En qué puedo ayudarte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Buenos días",
+            "intent": "Buenos días, ¿en qué puedo ayudarte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Buenas tardes",
+            "intent": "¡Hola! ¿Cómo puedo asistirte hoy?"
+          },
+          {
+            "domain": "default",
+            "utterance": "¿Cómo estás?",
+            "intent": "Hola, ¿en qué puedo colaborar contigo?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Hola, ¿cómo va?",
+            "intent": "¡Hola! ¿En qué puedo ayudarte hoy?"
+          },
+          {
+            "domain": "default",
+            "utterance": "¡Hola!",
+            "intent": "Hola, ¿cómo puedo asistirte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Saludos",
+            "intent": "¡Hola! ¿Cómo puedo ayudarte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Hola",
+            "intent": "Hola, bienvenido al chatbot."
+          },
+          {
+            "domain": "default",
+            "utterance": "Hola, ¿cómo estás?",
+            "intent": "¡Hola! Estoy aquí para ayudarte."
+          },
+          {
+            "domain": "default",
+            "utterance": "Saludos",
+            "intent": "Saludos, ¿en qué puedo asistirte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "¿Qué apoyos hay en la facultad?",
+            "intent": "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Explícame sobre los apoyos estudiantiles.",
+            "intent": "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Dime más sobre la facultad.",
+            "intent": "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+          },
+          {
+            "domain": "default",
+            "utterance": "Gracias",
+            "intent": "No hay de qué, es mi trabajo :)"
+          },
+          {
+            "domain": "default",
+            "utterance": "Te agradezco",
+            "intent": "De nada, estoy aquí para ayudarte."
+          },
+          {
+            "domain": "default",
+            "utterance": "¡Excelente ayuda!",
+            "intent": "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas."
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "es",
+              "tag": "nlu-es",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "hol": 1,
+              "buen": 1,
+              "dia": 1,
+              "tard": 1,
+              "como": 1,
+              "esta": 1,
+              "ir": 1,
+              "salud": 1,
+              "que": 1,
+              "apoy": 1,
+              "hab": 1,
+              "en": 1,
+              "el": 1,
+              "facult": 1,
+              "explicam": 1,
+              "sobr": 1,
+              "estudiantil": 1,
+              "dim": 1,
+              "mas": 1,
+              "grac": 1,
+              "te": 1,
+              "agradec": 1,
+              "excelent": 1,
+              "ayud": 1
+            },
+            "intents": {
+              "¡Hola! ¿En qué puedo ayudarte?": 1,
+              "Buenos días, ¿en qué puedo ayudarte?": 1,
+              "¡Hola! ¿Cómo puedo asistirte hoy?": 1,
+              "Hola, ¿en qué puedo colaborar contigo?": 1,
+              "¡Hola! ¿En qué puedo ayudarte hoy?": 1,
+              "Hola, ¿cómo puedo asistirte?": 1,
+              "¡Hola! ¿Cómo puedo ayudarte?": 1,
+              "Hola, bienvenido al chatbot.": 1,
+              "¡Hola! Estoy aquí para ayudarte.": 1,
+              "Saludos, ¿en qué puedo asistirte?": 1,
+              "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?": 1,
+              "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?": 1,
+              "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?": 1,
+              "No hay de qué, es mi trabajo :)": 1,
+              "De nada, estoy aquí para ayudarte.": 1,
+              "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas.": 1
+            },
+            "intentFeatures": {
+              "¡Hola! ¿En qué puedo ayudarte?": {
+                "hol": 1
+              },
+              "Buenos días, ¿en qué puedo ayudarte?": {
+                "buen": 1,
+                "dia": 1
+              },
+              "¡Hola! ¿Cómo puedo asistirte hoy?": {
+                "buen": 1,
+                "tard": 1
+              },
+              "Hola, ¿en qué puedo colaborar contigo?": {
+                "como": 1,
+                "esta": 1
+              },
+              "¡Hola! ¿En qué puedo ayudarte hoy?": {
+                "hol": 1,
+                "como": 1,
+                "ir": 1
+              },
+              "Hola, ¿cómo puedo asistirte?": {
+                "hol": 1
+              },
+              "¡Hola! ¿Cómo puedo ayudarte?": {
+                "salud": 1
+              },
+              "Hola, bienvenido al chatbot.": {
+                "hol": 1
+              },
+              "¡Hola! Estoy aquí para ayudarte.": {
+                "hol": 1,
+                "como": 1,
+                "esta": 1
+              },
+              "Saludos, ¿en qué puedo asistirte?": {
+                "salud": 1
+              },
+              "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?": {
+                "que": 1,
+                "apoy": 1,
+                "hab": 1,
+                "en": 1,
+                "el": 1,
+                "facult": 1
+              },
+              "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?": {
+                "explicam": 1,
+                "sobr": 1,
+                "el": 1,
+                "apoy": 1,
+                "estudiantil": 1
+              },
+              "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?": {
+                "dim": 1,
+                "mas": 1,
+                "sobr": 1,
+                "el": 1,
+                "facult": 1
+              },
+              "No hay de qué, es mi trabajo :)": {
+                "grac": 1
+              },
+              "De nada, estoy aquí para ayudarte.": {
+                "te": 1,
+                "agradec": 1
+              },
+              "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas.": {
+                "excelent": 1,
+                "ayud": 1
+              }
+            },
+            "featuresToIntent": {
+              "hol": [
+                "¡Hola! ¿En qué puedo ayudarte?",
+                "¡Hola! ¿En qué puedo ayudarte hoy?",
+                "Hola, ¿cómo puedo asistirte?",
+                "Hola, bienvenido al chatbot.",
+                "¡Hola! Estoy aquí para ayudarte."
+              ],
+              "buen": [
+                "Buenos días, ¿en qué puedo ayudarte?",
+                "¡Hola! ¿Cómo puedo asistirte hoy?"
+              ],
+              "dia": [
+                "Buenos días, ¿en qué puedo ayudarte?"
+              ],
+              "tard": [
+                "¡Hola! ¿Cómo puedo asistirte hoy?"
+              ],
+              "como": [
+                "Hola, ¿en qué puedo colaborar contigo?",
+                "¡Hola! ¿En qué puedo ayudarte hoy?",
+                "¡Hola! Estoy aquí para ayudarte."
+              ],
+              "esta": [
+                "Hola, ¿en qué puedo colaborar contigo?",
+                "¡Hola! Estoy aquí para ayudarte."
+              ],
+              "ir": [
+                "¡Hola! ¿En qué puedo ayudarte hoy?"
+              ],
+              "salud": [
+                "¡Hola! ¿Cómo puedo ayudarte?",
+                "Saludos, ¿en qué puedo asistirte?"
+              ],
+              "que": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?"
+              ],
+              "apoy": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?",
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?"
+              ],
+              "hab": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?"
+              ],
+              "en": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?"
+              ],
+              "el": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?",
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?",
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+              ],
+              "facult": [
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?",
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+              ],
+              "explicam": [
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?"
+              ],
+              "sobr": [
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?",
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+              ],
+              "estudiantil": [
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?"
+              ],
+              "dim": [
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+              ],
+              "mas": [
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?"
+              ],
+              "grac": [
+                "No hay de qué, es mi trabajo :)"
+              ],
+              "te": [
+                "De nada, estoy aquí para ayudarte."
+              ],
+              "agradec": [
+                "De nada, estoy aquí para ayudarte."
+              ],
+              "excelent": [
+                "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas."
+              ],
+              "ayud": [
+                "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas."
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "es",
+                "tag": "nlu-es",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "hol",
+                "buen",
+                "dia",
+                "tard",
+                "como",
+                "esta",
+                "ir",
+                "salud",
+                "que",
+                "apoy",
+                "hab",
+                "en",
+                "el",
+                "facult",
+                "explicam",
+                "sobr",
+                "estudiantil",
+                "dim",
+                "mas",
+                "grac",
+                "te",
+                "agradec",
+                "excelent",
+                "ayud"
+              ],
+              "intents": [
+                "¡Hola! ¿En qué puedo ayudarte?",
+                "Buenos días, ¿en qué puedo ayudarte?",
+                "¡Hola! ¿Cómo puedo asistirte hoy?",
+                "Hola, ¿en qué puedo colaborar contigo?",
+                "¡Hola! ¿En qué puedo ayudarte hoy?",
+                "Hola, ¿cómo puedo asistirte?",
+                "¡Hola! ¿Cómo puedo ayudarte?",
+                "Hola, bienvenido al chatbot.",
+                "¡Hola! Estoy aquí para ayudarte.",
+                "Saludos, ¿en qué puedo asistirte?",
+                "En la facultad de ingeniería hay varios apoyos, como el apoyo alimentario y alojamiento. ¿En qué más puedo ayudarte?",
+                "Los apoyos estudiantiles incluyen ayuda alimentaria, alojamiento y otros beneficios. ¿Tienes alguna pregunta específica?",
+                "La facultad de ingeniería ofrece una serie de apoyos estudiantiles que pueden variar según el programa académico y la sede específica. ¿En qué puedo asistirte?",
+                "No hay de qué, es mi trabajo :)",
+                "De nada, estoy aquí para ayudarte.",
+                "¡Gracias por tus palabras! Si tienes más preguntas, no dudes en hacerlas."
+              ],
+              "perceptrons": [
+                [
+                  3.76281476020813,
+                  -0.617821991443634,
+                  -0.3124595582485199,
+                  -0.3050444424152374,
+                  -3.1341795921325684,
+                  -1.2620898485183716,
+                  -1.870830774307251,
+                  -0.7035172581672668,
+                  -0.047076523303985596,
+                  -0.1092955470085144,
+                  -0.047076523303985596,
+                  -0.047076523303985596,
+                  -0.1688913255929947,
+                  -0.10923174023628235,
+                  -0.05944501608610153,
+                  -0.11900694668292999,
+                  -0.05944501608610153,
+                  -0.059380944818258286,
+                  -0.059380944818258286,
+                  -0.5097424387931824,
+                  -0.256220281124115,
+                  -0.256220281124115,
+                  -0.25619736313819885,
+                  -0.25619736313819885,
+                  0.5113961473569039
+                ],
+                [
+                  -0.6566954255104065,
+                  4.339028835296631,
+                  9.291348457336426,
+                  -4.953047752380371,
+                  -0.38772526383399963,
+                  -0.28628095984458923,
+                  -0.08809114992618561,
+                  -0.638368546962738,
+                  -0.0776163786649704,
+                  -0.1723005771636963,
+                  -0.0776163786649704,
+                  -0.0776163786649704,
+                  -0.25193455815315247,
+                  -0.16137874126434326,
+                  -0.08080614358186722,
+                  -0.16212549805641174,
+                  -0.08080614358186722,
+                  -0.07039991021156311,
+                  -0.07039991021156311,
+                  -0.6315711140632629,
+                  -0.3177611529827118,
+                  -0.3177611529827118,
+                  -0.3173156678676605,
+                  -0.3173156678676605,
+                  0.6331481010586295
+                ],
+                [
+                  -0.7090579271316528,
+                  4.369237899780273,
+                  -4.935618877410889,
+                  9.305607795715332,
+                  -0.4183237850666046,
+                  -0.3042534589767456,
+                  -0.09840993583202362,
+                  -0.6634491682052612,
+                  -0.08667821437120438,
+                  -0.1924600601196289,
+                  -0.08667821437120438,
+                  -0.08667821437120438,
+                  -0.2812435030937195,
+                  -0.1802448183298111,
+                  -0.09006059169769287,
+                  -0.18069857358932495,
+                  -0.09006059169769287,
+                  -0.07842517644166946,
+                  -0.07842517644166946,
+                  -0.5942620635032654,
+                  -0.3291459083557129,
+                  -0.3291459083557129,
+                  -0.3273579478263855,
+                  -0.3273579478263855,
+                  0.5899540221366575
+                ],
+                [
+                  -12.900728225708008,
+                  -0.630281925201416,
+                  -0.31588491797447205,
+                  -0.31342872977256775,
+                  5.827363967895508,
+                  6.6714630126953125,
+                  -0.8002968430519104,
+                  -0.9652288556098938,
+                  -0.08487657457590103,
+                  -0.19775450229644775,
+                  -0.08487657457590103,
+                  -0.08487657457590103,
+                  -0.31042301654815674,
+                  -0.1975085586309433,
+                  -0.11265325546264648,
+                  -0.22534196078777313,
+                  -0.11265325546264648,
+                  -0.1124037355184555,
+                  -0.1124037355184555,
+                  -0.9161047339439392,
+                  -0.4717820882797241,
+                  -0.4717820882797241,
+                  -0.47134724259376526,
+                  -0.47134724259376526,
+                  0.9567542569886021
+                ],
+                [
+                  0.5288705825805664,
+                  -0.07300004363059998,
+                  -0.03317534551024437,
+                  -0.029771877452731133,
+                  4.761340618133545,
+                  -4.746726989746094,
+                  9.507464408874512,
+                  -0.1957910805940628,
+                  -0.0306792501360178,
+                  -0.070083387196064,
+                  -0.0306792501360178,
+                  -0.0306792501360178,
+                  -0.10539089888334274,
+                  -0.06521876156330109,
+                  -0.02693256177008152,
+                  -0.06039123609662056,
+                  -0.02693256177008152,
+                  -0.022588375955820084,
+                  -0.022588375955820084,
+                  -0.06611503660678864,
+                  -0.05844752863049507,
+                  -0.05844752863049507,
+                  -0.05641753971576691,
+                  -0.05641753971576691,
+                  -0.5294347041668876
+                ],
+                [
+                  4.176119327545166,
+                  -0.3237827718257904,
+                  -0.16323170065879822,
+                  -0.1604491025209427,
+                  -3.1021595001220703,
+                  -1.7559515237808228,
+                  -1.3461527824401855,
+                  -0.879122257232666,
+                  -0.059340666979551315,
+                  -0.15104472637176514,
+                  -0.059340666979551315,
+                  -0.059340666979551315,
+                  -0.22706502676010132,
+                  -0.1510193943977356,
+                  -0.07601620256900787,
+                  -0.15203645825386047,
+                  -0.07601620256900787,
+                  -0.07599090039730072,
+                  -0.07599090039730072,
+                  -0.6743649244308472,
+                  -0.3389798700809479,
+                  -0.3389798700809479,
+                  -0.33893293142318726,
+                  -0.33893293142318726,
+                  0.6752245832736947
+                ],
+                [
+                  -1.1601334810256958,
+                  -0.5925310254096985,
+                  -0.30227065086364746,
+                  -0.2892889678478241,
+                  -0.4524911940097809,
+                  -0.4260422885417938,
+                  -0.01766378805041313,
+                  6.03106689453125,
+                  -0.09334491938352585,
+                  -0.21492935717105865,
+                  -0.09334491938352585,
+                  -0.09334491938352585,
+                  -0.32016685605049133,
+                  -0.2070559412240982,
+                  -0.10555512458086014,
+                  -0.21191173791885376,
+                  -0.10555512458086014,
+                  -0.09842918813228607,
+                  -0.09842918813228607,
+                  -0.8635294437408447,
+                  -0.4410271942615509,
+                  -0.4410271942615509,
+                  -0.43998032808303833,
+                  -0.43998032808303833,
+                  0.8658781319918145
+                ],
+                [
+                  4.259406089782715,
+                  -0.38313478231430054,
+                  -0.19342689216136932,
+                  -0.18954023718833923,
+                  -3.2903101444244385,
+                  -1.746285080909729,
+                  -1.5434857606887817,
+                  -0.774379551410675,
+                  -0.07051421701908112,
+                  -0.17605620622634888,
+                  -0.07051421701908112,
+                  -0.07051421701908112,
+                  -0.2626837491989136,
+                  -0.17595919966697693,
+                  -0.08660302311182022,
+                  -0.1732383817434311,
+                  -0.08660302311182022,
+                  -0.08651382476091385,
+                  -0.08651382476091385,
+                  -0.77342289686203,
+                  -0.38934651017189026,
+                  -0.38934651017189026,
+                  -0.3892822861671448,
+                  -0.3892822861671448,
+                  0.7745472400561104
+                ],
+                [
+                  7.947836399078369,
+                  -0.13140255212783813,
+                  -0.0594925694167614,
+                  -0.05341682583093643,
+                  3.213406801223755,
+                  7.0318803787231445,
+                  -3.788250684738159,
+                  -0.129873126745224,
+                  -0.049807485193014145,
+                  -0.11395558714866638,
+                  -0.049807485193014145,
+                  -0.049807485193014145,
+                  -0.17181986570358276,
+                  -0.10611142963171005,
+                  -0.04371730610728264,
+                  -0.09821266680955887,
+                  -0.04371730610728264,
+                  -0.03668540343642235,
+                  -0.03668540343642235,
+                  -0.10833707451820374,
+                  -0.09590927511453629,
+                  -0.09590927511453629,
+                  -0.09256601333618164,
+                  -0.09256601333618164,
+                  -7.017529159548915
+                ],
+                [
+                  -1.0167804956436157,
+                  -0.6854174733161926,
+                  -0.347778856754303,
+                  -0.3363998830318451,
+                  -0.5559098124504089,
+                  -0.46379774808883667,
+                  -0.08388352394104004,
+                  6.37982177734375,
+                  -0.11080365628004074,
+                  -0.2529422342777252,
+                  -0.11080365628004074,
+                  -0.11080365628004074,
+                  -0.3746160566806793,
+                  -0.24309216439723969,
+                  -0.1234900951385498,
+                  -0.24655579030513763,
+                  -0.1234900951385498,
+                  -0.11456160247325897,
+                  -0.11456160247325897,
+                  -1.0075172185897827,
+                  -0.5124441981315613,
+                  -0.5124441981315613,
+                  -0.5115389227867126,
+                  -0.5115389227867126,
+                  1.0080017403785895
+                ],
+                [
+                  -0.2022785097360611,
+                  -0.1357606053352356,
+                  -0.0648089274764061,
+                  -0.05804188922047615,
+                  -0.10811718553304672,
+                  -0.07101984322071075,
+                  -0.024874025955796242,
+                  -0.15171682834625244,
+                  2.9633185863494873,
+                  2.034273386001587,
+                  2.9633185863494873,
+                  2.9633185863494873,
+                  1.150293231010437,
+                  2.0793378353118896,
+                  -0.8845402002334595,
+                  -1.7996728420257568,
+                  -0.8845402002334595,
+                  -0.8579338788986206,
+                  -0.8579338788986206,
+                  -0.13237041234970093,
+                  -0.08771444857120514,
+                  -0.08771444857120514,
+                  -0.08498337119817734,
+                  -0.08498337119817734,
+                  0.1318537019486336
+                ],
+                [
+                  -0.25954148173332214,
+                  -0.17339752614498138,
+                  -0.08233670145273209,
+                  -0.07376904785633087,
+                  -0.14187666773796082,
+                  -0.09672071784734726,
+                  -0.03039374016225338,
+                  -0.21176305413246155,
+                  -0.8650386333465576,
+                  2.7520275115966797,
+                  -0.8650386333465576,
+                  -0.8650386333465576,
+                  1.5939178466796875,
+                  -2.0352323055267334,
+                  3.63215708732605,
+                  2.4740471839904785,
+                  3.63215708732605,
+                  -1.1480792760849,
+                  -1.1480792760849,
+                  -0.20138134062290192,
+                  -0.1189548671245575,
+                  -0.1189548671245575,
+                  -0.11567622423171997,
+                  -0.11567622423171997,
+                  0.20140464330245014
+                ],
+                [
+                  -0.30119168758392334,
+                  -0.20097075402736664,
+                  -0.09551525115966797,
+                  -0.08555630594491959,
+                  -0.15966209769248962,
+                  -0.10627595335245132,
+                  -0.03556795045733452,
+                  -0.20661665499210358,
+                  -0.8712771534919739,
+                  -2.0518598556518555,
+                  -0.8712771534919739,
+                  -0.8712771534919739,
+                  1.5903209447860718,
+                  2.7286503314971924,
+                  -1.1297173500061035,
+                  2.511324644088745,
+                  -1.1297173500061035,
+                  3.6496541500091553,
+                  3.6496541500091553,
+                  -0.1740940660238266,
+                  -0.12876039743423462,
+                  -0.12876039743423462,
+                  -0.12472277879714966,
+                  -0.12472277879714966,
+                  0.1561103148630404
+                ],
+                [
+                  -1.9148197174072266,
+                  -1.2769140005111694,
+                  -0.639144241809845,
+                  -0.6376653909683228,
+                  -1.012029767036438,
+                  -0.9020311236381531,
+                  -0.09900804609060287,
+                  -1.9127298593521118,
+                  -0.16906137764453888,
+                  -0.3944290280342102,
+                  -0.16906137764453888,
+                  -0.16906137764453888,
+                  -0.6197609305381775,
+                  -0.3943869173526764,
+                  -0.22533690929412842,
+                  -0.45067352056503296,
+                  -0.22533690929412842,
+                  -0.22529295086860657,
+                  -0.22529295086860657,
+                  12.345023155212402,
+                  -0.9575744867324829,
+                  -0.9575744867324829,
+                  -0.9574952125549316,
+                  -0.9574952125549316,
+                  1.9166092842117795
+                ],
+                [
+                  -0.9921104907989502,
+                  -0.6792818903923035,
+                  -0.34880131483078003,
+                  -0.32585325837135315,
+                  -0.5427240133285522,
+                  -0.44376125931739807,
+                  -0.08390245586633682,
+                  -0.9611364006996155,
+                  -0.09551345556974411,
+                  -0.2188478261232376,
+                  -0.09551345556974411,
+                  -0.09551345556974411,
+                  -0.33298203349113464,
+                  -0.216225728392601,
+                  -0.11316061019897461,
+                  -0.22790873050689697,
+                  -0.11316061019897461,
+                  -0.11109200865030289,
+                  -0.11109200865030289,
+                  -0.9293680787086487,
+                  6.677399635314941,
+                  6.677399635314941,
+                  -0.4984057545661926,
+                  -0.4984057545661926,
+                  0.9305649815759497
+                ],
+                [
+                  -0.9979285001754761,
+                  -0.686795175075531,
+                  -0.35103389620780945,
+                  -0.3294316232204437,
+                  -0.5463377237319946,
+                  -0.4440545439720154,
+                  -0.08691976964473724,
+                  -0.9620074033737183,
+                  -0.09861980378627777,
+                  -0.22191502153873444,
+                  -0.09861980378627777,
+                  -0.09861980378627777,
+                  -0.33814549446105957,
+                  -0.2197134643793106,
+                  -0.11246272921562195,
+                  -0.22998875379562378,
+                  -0.11246272921562195,
+                  -0.11143562197685242,
+                  -0.11143562197685242,
+                  -0.9300389885902405,
+                  -0.4791373312473297,
+                  -0.4791373312473297,
+                  6.677093029022217,
+                  6.677093029022217,
+                  0.9311902211280272
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "es",
+        "Hola"
+      ],
+      [
+        "es",
+        "Buenos días"
+      ],
+      [
+        "es",
+        "Buenas tardes"
+      ],
+      [
+        "es",
+        "¿Cómo estás?"
+      ],
+      [
+        "es",
+        "Hola, ¿cómo va?"
+      ],
+      [
+        "es",
+        "¡Hola!"
+      ],
+      [
+        "es",
+        "Saludos"
+      ],
+      [
+        "es",
+        "Hola"
+      ],
+      [
+        "es",
+        "Hola, ¿cómo estás?"
+      ],
+      [
+        "es",
+        "Saludos"
+      ],
+      [
+        "es",
+        "¿Qué apoyos hay en la facultad?"
+      ],
+      [
+        "es",
+        "Explícame sobre los apoyos estudiantiles."
+      ],
+      [
+        "es",
+        "Dime más sobre la facultad."
+      ],
+      [
+        "es",
+        "Gracias"
+      ],
+      [
+        "es",
+        "Te agradezco"
+      ],
+      [
+        "es",
+        "¡Excelente ayuda!"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
